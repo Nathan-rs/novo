@@ -187,7 +187,36 @@ class ModalMaps {
         const autocomplete = new google.maps.places.Autocomplete(inputSearch[0], options)
 
         autocomplete.addListener('place_changed', () => {
-            console.log(autocomplete)
+            const place = autocomplete.getPlace()
+
+            if(!place.geometry || !place.geometry.location) {
+                return
+            }
+
+            const location = place.geometry.location
+            const latitude = location.lat()
+            const longitude = location.lng()
+
+            if(this.marker) {
+                this.marker = null
+            }
+
+            this.marker = new google.maps.Marker({
+                position: {lat: latitude, lng: longitude},
+                map: map
+            })
+
+            map.setCenter({
+                lat: latitude,
+                lng: longitude
+            })
+
+            this.setPositionLatitude(latitude)
+            this.getPositionLongitude(longitude)
+            this.setAdress()
+
+            this.getInfoWindows(this.marker)
+            console.log(place)
         })
 
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(divSearch[0])
@@ -215,6 +244,8 @@ class ModalMaps {
     
                 map.setCenter(userLocation)
                 this.setAdress()
+
+                this.getInfoWindows(this.marker)
 
             })
         }
