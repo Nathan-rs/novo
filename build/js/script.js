@@ -4394,15 +4394,19 @@ class ModalMaps {
     }
 
     getCardAdress() {
-        let wrapper = new Div('wrapper')
-        let card = new Div('card')
-        let icon = new Icon('card-icon')
-        let adress = new Div('adress')
+        const wrapper = new Div('wrapper')
+        const iLocation = new Icon('location')
+        const divIcon = new Div('dv-icon-card')
+        const divInfo = new Div('dv-info')
+        const cidade = new Paragraph('title-card-cidade')
+        const estado = new Paragraph('title-card-estado')
+        const iClose = new Icon('close')
 
-        card.append(
-            icon,
-            adress
-        )
+        iLocation.addClass('i-card-location')
+        iClose.addClass('i-card-close')
+
+        divIcon.append(iLocation)
+        divInfo.append()
 
         for(let index in this.listAdress) {
             let paragraph = new Paragraph('adress-title')
