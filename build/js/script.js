@@ -4224,6 +4224,7 @@ class ModalMaps {
 
                 map.setCenter({lat: this.getPositionLatitude(), lng: this.getPositionLongitude()})
                 this.getInfoWindows(this.marker)
+                this.createCardAdress(map)
                 this.setAdress()
             });
 
@@ -4281,7 +4282,7 @@ class ModalMaps {
             const longitude = location.lng()
 
             if(this.marker) {
-                this.marker = null
+                this.marker.setMap(null)
             }
 
             this.marker = new google.maps.Marker({
@@ -4354,8 +4355,6 @@ class ModalMaps {
             const address = await this.getAddressLatitudeLongitude(marker.getPosition().lat(), marker.getPosition().lng());
             infowindow.setContent(address);
             infowindow.open(marker.map, marker);
-            // this.setAdress()
-            // console.log(adress)
         })
     }
 
@@ -4393,29 +4392,25 @@ class ModalMaps {
         if(adress) this.listAdress.push(adress)
     }
 
-    getCardAdress() {
-        const wrapper = new Div('wrapper')
-        const iLocation = new Icon('location')
+    createCardAdress(map) {
+        const wrapper = new Div('dv-card')
         const divIcon = new Div('dv-icon-card')
         const divInfo = new Div('dv-info')
-        const cidade = new Paragraph('title-card-cidade')
-        const estado = new Paragraph('title-card-estado')
+        const iLocation = new Icon('location')
         const iClose = new Icon('close')
+        const city = new Paragraph('title-card-cidade')
+        const state = new Paragraph('title-card-estado')
+        const coordinates = new Div('dv-coordernadas')
 
         iLocation.addClass('i-card-location')
         iClose.addClass('i-card-close')
 
         divIcon.append(iLocation)
-        divInfo.append()
+        divInfo.append(city, state, coordinates)
 
-        for(let index in this.listAdress) {
-            let paragraph = new Paragraph('adress-title')
-            icon.addClass('location')
-            paragraph.text(this.listAdress[index])
-            adress.append(paragraph)
-        }
-
-        return card
+        wrapper.append(divIcon, divInfo, iClose)
+        
+        map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(wrapper[0])
     }
 
     getAdress() {

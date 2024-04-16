@@ -329,8 +329,9 @@ body {
 .dv-search .dv-content {
   width: 80%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 1rem;
   padding: 0.3rem;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
@@ -341,7 +342,7 @@ body {
   background-color: transparent;
   border: none;
   height: 20px;
-  width: 70%;
+  width: 80%;
 }
 .dv-search .input-search:focus {
   outline: none;
@@ -350,6 +351,9 @@ body {
   color: var(--secondary);
   width: 20px;
   height: 20px;
+}
+.dv-search .icon-search:hover {
+  color: var(--info);
 }
 
 .card {
