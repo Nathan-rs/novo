@@ -4224,10 +4224,9 @@ class ModalMaps {
 
                 map.setCenter({lat: this.getPositionLatitude(), lng: this.getPositionLongitude()})
                 this.getInfoWindows(this.marker)
-                this.createCardAdress(map)
                 this.setAdress()
             });
-
+            this.createCardAdress(map)
             return map
         } catch (error) {
             console.error('Erro ao criar o mapa', error)
@@ -4400,16 +4399,23 @@ class ModalMaps {
         const iClose = new Icon('close')
         const city = new Paragraph('title-card-cidade')
         const state = new Paragraph('title-card-estado')
-        const coordinates = new Div('dv-coordernadas')
+        const cityStateWrapper = new Div('dv-ct-stt')
+        const coordinates = new Div('dv-coordinates')
 
         iLocation.addClass('i-card-location')
         iClose.addClass('i-card-close')
 
         divIcon.append(iLocation)
-        divInfo.append(city, state, coordinates)
+        cityStateWrapper.append(city, state)
+        divInfo.append(cityStateWrapper, coordinates)
+
+        city.text('Caxias')
+        state.text('Maranhão')
+        coordinates.text('121212121212,'+'1221212121')
 
         wrapper.append(divIcon, divInfo, iClose)
         
+
         map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(wrapper[0])
     }
 
