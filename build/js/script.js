@@ -4439,6 +4439,10 @@ class ModalMaps {
         elementCity.text(adressInfo[0])
         elementState.text(adressInfo[2])
         elementCoordinates.text(`${latitude}, ${longitude}`)
+
+        iClose.on('click', () => {
+            this.cardAddress.remove()
+        })
     }
 
     getAddress() {
