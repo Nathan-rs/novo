@@ -4088,11 +4088,10 @@ class ModalMaps {
             value: null
         }, config)
 
-        this.adress = null,
+        this.address = null,
         this.latitude = null,
         this.longitude = null,
         this.marker = null,
-        this.listAdress = [],
         this.cardAddress = null,
 
         
@@ -4105,16 +4104,15 @@ class ModalMaps {
         this.content = new Div('content')
         this.areaClick = new Div('div-button')
         this.button = new Button('btn-ok')
-        this.adress = new Div('content-adress')
+        this.address = new Div('content-adress')
         this.divModal = new Div('div-modal')
         this.buttonModal = new Button('btn-open-modal')
 
         this.iconClose.addClass('close')
 
         this.setCoordinates(this.config.value)
-        console.log(this.parseCoordinatesString(this.config.value))
         
-        this.setAdress(this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude()))
+        this.setAddress(this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude()))
 
         this.wrapper.append(this.container)
 
@@ -4141,8 +4139,7 @@ class ModalMaps {
         this.button.on('click', () => {
             console.log('Latitude: ', this.getPositionLatitude());
             console.log('Longitude: ', this.getPositionLongitude())
-            console.log('Endereco: ', this.getAdress())
-            this.addAdress(this.getAdress())
+            console.log('Endereco: ', this.getAddress())
         })
 
         this.buttonModal.on('click', () => {
@@ -4167,7 +4164,7 @@ class ModalMaps {
                 this.getErrorMensage()
             }
             window.getCreateMap = this.getCreateMap
-            this.setAdress()
+            this.setAddress()
         })
     }
 
@@ -4204,11 +4201,10 @@ class ModalMaps {
             })
             
             map.addListener('click', async (event) => {
-                // coordenadas de latitude e longitude de evento clique
+
                 const latitude = event.latLng.lat();
                 const longitude = event.latLng.lng();
 
-                // Atualiza as coordenadas nas propriedades da classe
                 this.setPositionLatitude(latitude)
                 this.setPositionLongitude(longitude)
 
@@ -4227,7 +4223,7 @@ class ModalMaps {
                 map.setCenter({lat: this.getPositionLatitude(), lng: this.getPositionLongitude()})
                 this.getInfoWindows(this.marker)
                 this.createCardAddress(map, this.getPositionLatitude(), this.getPositionLongitude())
-                this.setAdress()
+                this.setAddress()
             });
             return map
         } catch (error) {
@@ -4298,7 +4294,7 @@ class ModalMaps {
 
             this.setPositionLatitude(latitude)
             this.getPositionLongitude(longitude)
-            this.setAdress()
+            this.setAddress()
 
             this.getInfoWindows(this.marker)
             console.log(place)
@@ -4328,7 +4324,7 @@ class ModalMaps {
                 })
     
                 map.setCenter(userLocation)
-                this.setAdress()
+                this.setAddress()
 
                 this.getInfoWindows(this.marker)
 
@@ -4349,10 +4345,11 @@ class ModalMaps {
         map.panTo(latLng);
     }
 
-    parseCoordinatesString(coodinateString) {
-        const coordinates = coodinateString.trim().split('&')
+    parseCoordinatesString(coordinateString) {
+        const regexCoordinates = /^-?(90(\.0+)?|[1-8]?\d(\.\d+)?),\s*-?(180(\.0+)?|1[0-7]\d(\.\d+)?|\d{1,2}(\.\d+)?)$/
 
-        if(coordinates.length === 2) {
+        if(regexCoordinates.test(coordinateString)) {
+            const coordinates = coordinateString.trim().split('&')
             const latitude = parseFloat(coordinates[0])
             const longitude = parseFloat(coordinates[1])
 
@@ -4360,7 +4357,6 @@ class ModalMaps {
                 return { latitude, longitude }
             }
         }
-
         return null
     }
 
@@ -4404,10 +4400,6 @@ class ModalMaps {
         return this.divModal
     }
 
-    addAdress(adress) {
-        if(adress) this.listAdress.push(adress)
-    }
-
     async createCardAddress(map, latitude, longitude) {
         if(this.cardAddress) {
             this.cardAddress.remove()
@@ -4449,12 +4441,12 @@ class ModalMaps {
         elementCoordinates.text(`${latitude}, ${longitude}`)
     }
 
-    getAdress() {
-        return this.adress || "Endereço não encontrado"
+    getAddress() {
+        return this.address || "Endereço não encontrado"
     }
 
-    async setAdress() {
-        this.adress = await this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude());
+    async setAddress() {
+        this.address = await this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude());
     }
 
     getErrorMensage() {
@@ -4462,10 +4454,6 @@ class ModalMaps {
         titleErro.text("Não foi possivel exibir o mapa")
         this.content.append(titleErro)
         this.areaClick.css('display', 'none')
-    }
-
-    getContent() {
-        return this.content.children().length > 0
     }
 
     setCoordinates(coordinates) {
@@ -4538,7 +4526,7 @@ const fildModalMaps = new FieldGroup({
 
 const modalMaps = new ModalMaps({
    title: "Modal de pesquisa",
-   value: "-479791&-43.329"
+   value: "&"
 })
 
 // listCardLocation.appendToContent(modalMaps.getCardAdress())

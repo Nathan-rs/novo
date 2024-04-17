@@ -23,7 +23,7 @@ const fildModalMaps = new FieldGroup({
 
 const modalMaps = new ModalMaps({
    title: "Modal de pesquisa",
-   value: "-479791&-43.329"
+   value: "&"
 })
 
 // listCardLocation.appendToContent(modalMaps.getCardAdress())
