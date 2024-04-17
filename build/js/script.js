@@ -4093,6 +4093,7 @@ class ModalMaps {
         this.longitude = null,
         this.marker = null,
         this.listAdress = [],
+        this.cardAddress = null,
 
         
         //Elementos HTML
@@ -4110,14 +4111,15 @@ class ModalMaps {
 
         this.iconClose.addClass('close')
 
-        this.setPositionLatitude(-23.55052)
-        this.setPositionLongitude(-46.633308)
+        this.setCoordinates(this.config.value)
+        console.log(this.parseCoordinatesString(this.config.value))
+        
         this.setAdress(this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude()))
 
         this.wrapper.append(this.container)
 
         this.contentHeader.append(
-            this.title, 
+            this.title,
             this.iconClose
         )
 
@@ -4224,9 +4226,9 @@ class ModalMaps {
 
                 map.setCenter({lat: this.getPositionLatitude(), lng: this.getPositionLongitude()})
                 this.getInfoWindows(this.marker)
+                this.createCardAddress(map, this.getPositionLatitude(), this.getPositionLongitude())
                 this.setAdress()
             });
-            this.createCardAdress(map)
             return map
         } catch (error) {
             console.error('Erro ao criar o mapa', error)
@@ -4347,6 +4349,21 @@ class ModalMaps {
         map.panTo(latLng);
     }
 
+    parseCoordinatesString(coodinateString) {
+        const coordinates = coodinateString.trim().split('&')
+
+        if(coordinates.length === 2) {
+            const latitude = parseFloat(coordinates[0])
+            const longitude = parseFloat(coordinates[1])
+
+            if(!isNaN(latitude) && !isNaN(longitude)) {
+                return { latitude, longitude }
+            }
+        }
+
+        return null
+    }
+
     getInfoWindows(marker) {
         const infowindow = new google.maps.InfoWindow()
 
@@ -4391,32 +4408,45 @@ class ModalMaps {
         if(adress) this.listAdress.push(adress)
     }
 
-    createCardAdress(map) {
-        const wrapper = new Div('dv-card')
+    async createCardAddress(map, latitude, longitude) {
+        if(this.cardAddress) {
+            this.cardAddress.remove()
+        }
+
+        this.cardAddress = new Div('dv-card')
         const divIcon = new Div('dv-icon-card')
         const divInfo = new Div('dv-info')
         const iLocation = new Icon('location')
         const iClose = new Icon('close')
-        const city = new Paragraph('title-card-cidade')
-        const state = new Paragraph('title-card-estado')
+        const elementCity = new Paragraph('title-card-city')
+        const elementState = new Paragraph('title-card-state')
         const cityStateWrapper = new Div('dv-ct-stt')
-        const coordinates = new Div('dv-coordinates')
+        const wrapperCoordinates = new Div('dv-coordinates')
+        const elementCoordinates = new Paragraph('title-coordinates')
 
         iLocation.addClass('i-card-location')
         iClose.addClass('i-card-close')
 
         divIcon.append(iLocation)
-        cityStateWrapper.append(city, state)
-        divInfo.append(cityStateWrapper, coordinates)
+        cityStateWrapper.append(elementCity, elementState)
+        wrapperCoordinates.append(elementCoordinates)
+        divInfo.append(cityStateWrapper, wrapperCoordinates)
 
-        city.text('Caxias')
-        state.text('Maranhão')
-        coordinates.text('121212121212,'+'1221212121')
+        // city.text('Caxias')
+        // state.text('Maranhão')
+        // coordinates.text('121212121212,'+' 1221212121')
 
-        wrapper.append(divIcon, divInfo, iClose)
+        this.cardAddress.append(divIcon, divInfo, iClose)
         
 
-        map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(wrapper[0])
+        map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(this.cardAddress[0])
+
+        const address = await this.getAddressLatitudeLongitude(latitude, longitude);
+        const adressInfo = address.split(', ')
+
+        elementCity.text(adressInfo[0])
+        elementState.text(adressInfo[2])
+        elementCoordinates.text(`${latitude}, ${longitude}`)
     }
 
     getAdress() {
@@ -4436,6 +4466,23 @@ class ModalMaps {
 
     getContent() {
         return this.content.children().length > 0
+    }
+
+    setCoordinates(coordinates) {
+        const parseCoordinates = this.parseCoordinatesString(coordinates)
+
+        if(coordinates && parseCoordinates) {
+            this.setPositionLatitude(parseCoordinates.latitude)
+            this.setPositionLongitude(parseCoordinates.longitude)
+            return
+        }
+
+        this.setDefaultCoodinates()
+    }
+
+    setDefaultCoodinates() {
+        this.setPositionLatitude(-23.55052)
+        this.setPositionLongitude(-46.633308)
     }
 
     setPositionLatitude(latitude) {
@@ -4491,7 +4538,7 @@ const fildModalMaps = new FieldGroup({
 
 const modalMaps = new ModalMaps({
    title: "Modal de pesquisa",
-   value: "latitude&longitude"
+   value: "-479791&-43.329"
 })
 
 // listCardLocation.appendToContent(modalMaps.getCardAdress())

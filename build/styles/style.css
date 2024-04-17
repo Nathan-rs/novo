@@ -360,7 +360,6 @@ body {
   width: 20rem;
   height: 5rem;
   background-color: #fff;
-  border: 1px solid red;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -373,7 +372,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid blue;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 4px -1px;
 }
 .dv-card .dv-info {
   width: 100%;
@@ -382,7 +381,21 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #000;
+}
+.dv-card .dv-info .title-coordinates {
+  font-size: 0.7rem;
+  font-weight: bold;
+  line-height: 1rem;
+  color: var(--info);
+}
+.dv-card .dv-info .title-card-city {
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+.dv-card .dv-info .title-card-state {
+  font-size: 0.7rem;
+  font-weight: 400;
 }
 .dv-card .i-card-location {
   width: 50px;
