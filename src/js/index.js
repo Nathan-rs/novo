@@ -14,21 +14,20 @@ const fildModalMaps = new FieldGroup({
    collapse: false
 })
 
-// const listCardLocation = new FieldGroup({
-//    title: "Localizações selecionadas",
-//    description: "Endereco latitude e longitude",
-//    open: true,
-//    collapse: false
-// })
+
+const teste = new Modal({
+   size: "large"
+})
+
+teste.show()
+
 
 const modalMaps = new ModalMaps({
    title: "Modal de pesquisa",
-   value: "&"
+   value: "-4.8653802&-46.633308"
 })
 
-// listCardLocation.appendToContent(modalMaps.getCardAdress())
 fildModalMaps.appendToContent([modalMaps.getViewButtonModal(), modalMaps.getView()])
-// const contentList = [otherFieldGroup.getView(), fildModalMaps.getView()]
 const contentList = [fildModalMaps.getView()]
 
 

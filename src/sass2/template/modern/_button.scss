@@ -1,0 +1,217 @@
+// Classe principal de botões
+.btn-sc, .btn-ac, .btn-wn  {
+    color: var(--secondary) !important;
+}
+
+
+.btn-ol-ac:hover:not(:disabled) {
+    color: var(--secondary) !important;
+}
+
+.btn {
+    color: $btn-color;
+    font-family: $font-primary;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    display: inline-block;
+    text-decoration: none;
+    line-height: $btn-line-height;
+    // letter-spacing: $btn-letter-spacing;
+    // text-transform: $btn-text-tranform;
+    border: $btn-border;
+    font-weight: bold;
+    font-family: $font-primary;
+    background-color: $btn-background-color;
+    border-radius: $btn-border-radius;
+    @include btn-size($btn-pd-y, $btn-pd-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+
+    // Cancelar 
+    &.btn-cl {
+        color: $btn-cancel-color;
+        background-color: $btn-cancel-background;
+    }
+
+	&.btn-absolute{
+		position: absolute;
+	}
+
+    // Icones botões 
+    &.btn-ic {
+        @extend .tx-lg;
+        letter-spacing: 0;
+        padding: 0;
+        height: 40px;
+        width: 40px;
+        border-radius: 50px;
+        vertical-align: bottom;
+
+        * {
+            line-height: 38px;
+        }
+
+        &.btn-lg {
+            padding: 0;
+            height: 53px;
+            width: 53px;
+
+            i {
+                padding-left: 1px;
+                line-height: 51px;
+                /*font-size: $font-h5;*/
+            }
+        }
+    }
+
+    // Botão desativado
+    &:disabled {
+        cursor: not-allowed;
+
+        * {
+            cursor: inherit;
+            color: inherit;
+        }
+    }
+
+    &.btn-fl-li {
+
+        position: absolute;
+        right: 20px;
+        bottom: -40px;
+        z-index: 10;
+        border-radius: 100%;
+
+        label {
+
+            box-shadow: $box-shadow-medium;
+            cursor: pointer;
+            position: absolute;
+            padding: 0 !important;
+            color: $color-third;
+            background-color: $color-accent;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            bottom: 0;
+            right: 0; 
+            z-index: 10;
+            letter-spacing: normal !important; 
+
+            i {
+
+                height: 100%;
+                font-size: 26px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                animation: ft-plus-out .3s;
+
+            }
+        }
+        
+    }
+
+
+}
+
+// Loop de cores dos botões
+@each $key,
+$color in $btn-colors {
+
+    // Gera as classes de botões coloridos
+    .btn-#{$key} {
+        @include btn-colored($btn-colored-text-color, $color);
+    }
+
+    // Gera as classes de botões coloridos estilo outline
+    .btn-ol-#{$key} {
+        @include btn-colored-outline($btn-colored-text-color, $color);
+    }
+
+}
+
+// Variação de tamanhos
+.btn-lg {
+    @include btn-size($btn-pd-y-lg, $btn-pd-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
+
+.btn-sm {
+    @include btn-size($btn-pd-y-sm, $btn-pd-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+}
+
+// Botão largura 100%
+.btn-block {
+    display: block;
+    width: 100%;
+
+    // Espaçamento vertical para multiplos botoes block
+    +.btn-block {
+        margin-top: $btn-block-spacing-y;
+    }
+}
+
+// Botão para lista
+.btn-list {
+    width: 110px;
+    letter-spacing: var(--button-list-letter-spacing);
+    text-transform: var(--button-list-text);
+    font-size: var(--button-list-font-size);
+    font-weight: var(--button-list-font-weight);;
+    padding: var(--button-list-padding-y) var(--button-list-padding-x) !important;
+    border-radius: var(--button-list-radius) !important;
+    -moz-box-shadow: var(--button-list-shadow);
+    -webkit-box-shadow: var(--button-list-shadow);
+    box-shadow: var(--button-list-shadow); 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    .circle {
+        width: 14px;
+        height: 14px;
+        border-radius: 10px;
+        float: left;
+        margin-right: 5px;
+    }
+
+}
+
+// Botão do editor de página
+.btn-input-editor {
+
+    padding: 10px 20px 14px 12px !important;
+    background-color: $btn-background-color;
+    letter-spacing: var(--button-input-editor-letter-spacing);
+    text-transform: var(--button-input-editor-text);
+
+    padding: var(--button-input-editor-padding-y) var(--button-input-editor-padding-x) !important;
+    border-radius: var(--button-input-editor-radius) !important;
+
+    -moz-box-shadow: var(--button-input-editor-shadow);
+    -webkit-box-shadow: var(--button-input-editor-shadow);
+    box-shadow: var(--button-input-editor-shadow);
+
+    font-weight: normal;
+
+
+    label {
+        cursor: pointer;
+        color: $color-primary;
+
+        position: relative;
+        left: 5px;
+        letter-spacing: 0;
+        text-transform: capitalize;
+        font-weight: normal;
+        font-size: $label-font-size  !important;
+    }
+
+    i {
+        position: relative;
+        top: 3px;
+        color: $color-accent;
+
+    }
+}

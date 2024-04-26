@@ -1,0 +1,124 @@
+// Label
+.lb-ct {
+
+    // display: block;
+    position: relative;
+    z-index: 1;
+    color: $label-text-color;
+    text-overflow: ellipsis;
+    // white-space: nowrap;
+    overflow: hidden;
+ 
+    &.noWidth {
+        max-width: none;
+    }
+
+    &.noWrap {
+        white-space: nowrap;
+    }
+
+    // Ícone
+    .lb-ct-ic  {
+        vertical-align: middle;
+        width: 22px;
+        height: 22px; 
+    }
+
+    // @media screen and (max-width: 1400px - 1px) {
+
+    //     // Label
+    //     .lb-ct-lb {
+    //         font-size: $font-md !important; 
+    //     }
+    //     // Sublabel
+    //     .lb-ct-sl {
+    //         font-size: $font-sm !important;
+    //         color: var(--grey);
+    //     } 
+    //     // Icon
+    //     .lb-ct-ic {
+    //         font-size: $font-lg !important;
+    //     }
+    // }
+
+    // Label
+    .lb-ct-lb {
+        font-family: $font-primary;;
+        vertical-align: middle;
+        font-size: $label-font-size;
+        color: $label-text-color;
+        &.lb-lk {
+            font-size: $label-link-font-size !important;
+        }
+
+        &.bs {
+            white-space: break-spaces; 
+        }
+
+        &[contenteditable="true"] {
+            display: block; 
+            min-width: 2rem;
+            // padding: $dimen-1x 0px 0px;
+            background-color: $color-alpha;
+            // @include border-radius($dimen-md);
+            @include transition(all $time-default ease-in-out);
+            
+            &:hover {
+                // cursor: text;
+                // background-color: $color-secondary;
+                border-bottom: 3px solid var(--grey2);
+            } 
+        }
+    }
+
+    // Sublabel
+    .lb-ct-sl {
+        font-size: $label-sublabel-font-size;
+        color:var(--default);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &.bs {
+            white-space: break-spaces; 
+        }
+
+        &.lk {
+            color: $color-black;
+            font-size: $label-sublabel-font-size + $dimen-xs;
+        }
+    } 
+
+    // Marker
+    .lb-ct-mk {
+        height: 32px;
+        border-radius: 100%;
+        width: 32px;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $color-third;
+
+        svg {
+            height: 16px;
+            width: 16px;
+        }
+
+    }
+
+}
+
+// Label Chip
+.lb-ct-pd-bd {
+    padding: $dimen-md $dimen-xs;
+    border-radius: $btn-border-radius;  
+
+    label {
+        font-size: 10px !important;
+        text-transform: $label-chip-text-transform !important;
+        font-weight: bold;
+        letter-spacing: 3px !important;
+    }
+}
+

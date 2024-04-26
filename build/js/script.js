@@ -630,6 +630,220 @@ class FieldGroup {
       return this.wrapper
    }
 }
+// Animation time
+const TIME_FAST = 200
+const TIME_DEFAULT = 300
+const TIME_SLOW = 800
+const TIME_MEDIUM = 500
+const TIME_INTERVAL_CHART = 1500
+
+// Configurações
+
+// const VERSION_URL = "version/" + VERSION_NUMBER + "/"
+
+const isCloud = () => {
+   return window.location.href.includes("www.allinsys.com")
+}
+
+const getLoginURL = () => {
+   if (window.location.href.indexOf("allinsys.com") > -1) {
+      url = "https://www.allinsys.com/login"
+   } else {
+      url = "https://localhost/allinsys/login"
+   }
+   return url
+}
+
+// const getDefaultURL = () => {
+//    if (window.location.href.indexOf("allinsys.com") > -1) {
+//       url = "https://www.allinsys.com/system/" + VERSION_URL
+//    } else {
+//       url = "https://localhost/allinsys/system/" + VERSION_URL
+//    }
+//    return url
+// }
+
+// const DEFAULT_LOGIN_URL = getLoginURL()
+// const DEFAULT_URL = getDefaultURL()
+// const DEFAULT_ASSETS_URL = url + "assets/"
+// const DEFAULT_ERROR_LOG = DEFAULT_URL + "php/global/error-receiver.php"
+// const DEFAULT_LOG = false
+// const DEFAULT_MODAL_MENU_WIDTH = 400
+// const DEFAULT_FORM_ACTION_INSERT = "form_insert"
+// const DEFAULT_FORM_ACTION_UPDATE = "form_update"
+// const DEFAULT_MODULE_LOADER_URL = DEFAULT_URL + "php/global/module-loader.php"
+// const DEFAULT_GET_FORM_URL = DEFAULT_URL + "php/global/get-form.php"
+// const DEFAULT_FORM_URL = DEFAULT_URL + "php/global/form.php"
+// const DEFAULT_FORM_INSERT_URL = DEFAULT_URL + "php/global/form-insert.php"
+// const DEFAULT_FORM_UPDATE_URL = DEFAULT_URL + "php/global/form-update.php"
+// const DEFAULT_FILE_HANDLER_URL = DEFAULT_URL + "php/global/file-handler-call.php"
+// const DEFAULT_UPLOAD_HANDLER_URL = DEFAULT_URL + "php/global/upload-handler.php"
+// const DEFAULT_CHART_HANDLER_URL = DEFAULT_URL + "php/global/chart-handler.php"
+// const DEFAULT_DASHBOARD_HANDLER_URL = DEFAULT_URL + "php/global/dashboard-handler.php"
+// const DEFAULT_TRIGGER_HANDLER_URL = DEFAULT_URL + "php/global/trigger-handler.php"
+// const DEFAULT_FILTER_URL = DEFAULT_URL + "php/global/filter.php"
+// const DEFAULT_QUIZ_URL = DEFAULT_URL + "php/global/quiz.php"
+// const DEFAULT_GET_LIST_URL = DEFAULT_URL + "php/global/get-list.php"
+// const DEFAULT_VALIDATE_HANDLER_URL = DEFAULT_URL + "php/global/validate-handler.php"
+// const DEFAULT_LIST_URL = DEFAULT_URL + "php/global/list.php"
+// const DEFAULT_FORM_MULTIPLE_URL = DEFAULT_URL + "php/global/form-multiple.php"
+// const DEFAULT_PARTIAL_UPDATE_URL = DEFAULT_URL + "php/global/partial-update.php"
+// const DEFAULT_LOGIN_HANDLER_URL = DEFAULT_URL + "php/global/login-handler.php"
+// const DEFAULT_UPDATE_SHORTCUT_URL = DEFAULT_URL + "php/global/update-shortcut.php"
+// const DEFAULT_EDITOR_PAGE_URL = DEFAULT_URL + "php/global/editor.php"
+// const DEFAULT_CHECK_LIST_URL = DEFAULT_URL + "php/global/check-list.php"
+// const DEFAULT_GET_SINGLE_MODULE = DEFAULT_URL + "php/global/get-single-module.php"
+// const DEFAULT_LIST_UPDATE_URL = DEFAULT_URL + "php/global/list-update.php"
+// const DEFAULT_REQUEST_URL = DEFAULT_URL + "php/global/request.php"
+// const DEFAULT_SELECT_URL = DEFAULT_URL + "php/global/select.php"
+// const DEFAULT_DUPLICATE_URL = DEFAULT_URL + 'php/global/duplicate.php'
+// const DEFAULT_COPY_URL = DEFAULT_URL + 'php/global/copy.php'
+// const DEFAULT_DELETE_URL = DEFAULT_URL + "php/global/delete.php"
+// const DEFAULT_GET_FUNCTION_URL = DEFAULT_URL + "php/global/get-function.php"
+// const DEFAULT_WEATHER_HANDLER_URL = DEFAULT_URL + "php/global/weather-handler.php"
+// const DEFAULT_WEATHER_API_URL = DEFAULT_URL + "php/global/weather-api.php"
+
+const DEFAULT_THEME_DEFAULT = "default"
+const DEFAULT_THEME_PRIMARY = "primary"
+const DEFAULT_THEME_INFO = "info"
+const DEFAULT_THEME_SUCCESS = "success"
+const DEFAULT_THEME_WARNING = "warning"
+const DEFAULT_THEME_DANGER = "danger"
+const DEFAULT_THEME_MAP = {
+   df: DEFAULT_THEME_DEFAULT,
+   pm: DEFAULT_THEME_PRIMARY,
+   if: DEFAULT_THEME_INFO,
+   sc: DEFAULT_THEME_SUCCESS,
+   wn: DEFAULT_THEME_WARNING,
+   dg: DEFAULT_THEME_DANGER,
+}
+
+// Tipos de dados
+const DATATYPE_INT = "int"
+const DATATYPE_FLOAT = "float"
+const DATATYPE_BOOL = "bool"
+const DATATYPE_STRING = "string"
+const DATATYPE_OBJECT = "object"
+const DATATYPE_CURRENCY = "currency"
+const DATATYPE_MONEY = "money"
+const DATATYPE_METERS = "meters"
+const DATATYPE_KILOMETER = "kilometer"
+const DATATYPE_COST = "cost"
+const DATATYPE_UNIQUE = "unique"
+const DATATYPE_TOKEN = 'token';
+const DATATYPE_CONSUMPTION = "consumption"
+const DATATYPE_PERCENT = "percent"
+const DATATYPE_PERCENT_COST = "percent_cost"
+const DATATYPE_DATE = "date"
+const DATATYPE_DATETIME = "datetime"
+const DATATYPE_JSON = "json"
+const DATATYPE_DOCUMENT_COMPANY = "company"
+const DATATYPE_DOCUMENT_PERSON = "person"
+const DATATYPE_DOCUMENT = "document"
+const DATATYPE_CENTIMETER = "centimeter"
+const DATATYPE_COUNT = "count"
+
+// Indetificador de criptografia
+const KEY_JS = "N#Rr0IIsN@VuNPvvs9FsLc9ymFU&z2PGFE0+k=CG#YA8##X!&oM!AtWxK0*Et%AK"
+
+// Cores
+const COLORS = {
+   PRIMARY: "var(--primary)",
+   SECONDARY: "var(--secondary)",
+   DEFAULT: "var(--default)",
+   SUCCESS: "var(--success)",
+   WARNING: "var(--warning)",
+   DANGER: "var(--danger)",
+   INFO: "var(--info)",
+   GREY: "var(--grey)"
+}
+
+// Tipos de widgets
+const WIDGET_ALERT = "alert"
+const WIDGET_LIST = "list"
+const WIDGET_DATE = "date_picker"
+const WIDGET_INPUT = "input"
+const WIDGET_RATING = 'rating';
+const WIDGET_CHECKLIST = 'check_list';
+const WIDGET_INPUT_COLOR = "input_color"
+const WIDGET_INPUT_MARKER = "marker"
+const WIDGET_TEXTAREA = "textarea"
+const WIDGET_CHECKBOX = "checkbox"
+const WIDGET_RADIO = "radio"
+const WIDGET_TOGGLE = "toggle"
+const WIDGET_SELECT = "select"
+const WIDGET_SELECT_MULTIPLE = "select_multiple"
+const WIDGET_CHIP_INPUT = "chip_input"
+const WIDGET_LIST_INPUT = "list_input"
+const WIDGET_LIST_INPUT_ADD = "list_input_add"
+const WIDGET_EDITOR = "editor"
+const WIDGET_HTML_EDITOR = "editor_html"
+const WIDGET_DROPDOWN = "dropdown"
+const WIDGET_BUTTON = "button"
+const WIDGET_FLOAT_BUTTON = "float"
+const WIDGET_FORM = "form"
+const WIDGET_LINK = "link"
+const WIDGET_LABEL = "label"
+const WIDGET_MARKER = "marker"
+const WIDGET_IMAGE = "image"
+const WIDGET_IMAGE_INPUT = "image_input"
+const WIDGET_IMAGE_EDITOR = "image_editor"
+const WIDGET_MODAL = "modal"
+const WIDGET_PROGRESS_BAR_CIRCLE = "progress_circle"
+const WIDGET_PROGRESS_DIALOG = "progress_dialog"
+const WIDGET_PROGRESS_TASK = "progress_task"
+const WIDGET_EVENT = "event"
+const WIDGET_EVENTS = "events"
+const WIDGET_CONFIRM_DIALOG = "confirm_dialog"
+const WIDGET_TAB = "tab"
+const WIDGET_TABLE = "table"
+const WIDGET_REPORT = "report"
+const WIDGET_EXPORT = "export"
+const WIDGET_TABLE_MENU = "table_menu"
+const WIDGET_ROW_VIEW_COLLAPSE = "row_view_collapse"
+const WIDGET_MODULE = "module"
+const WIDGET_MODULE_SELECTION = "module_selection"
+const WIDGET_WINDOW = "window"
+const WIDGET_NAV_BAR = "nav_bar"
+const WIDGET_EDITOR_MENU = "editor_menu"
+const WIDGET_EDITOR_PAGE = "editor_page"
+const WIDGET_PREVIEW_IMAGE = "preview_image"
+const WIDGET_TOOLTIP = "tooltip"
+const WIDGET_INPUT_RANGE_SINGLE = "input_range_single"
+const WIDGET_INPUT_RANGE = "input_range"
+const WIDGET_INPUT_EDITOR = "input_editor"
+const WIDGET_FILTER_HANDLER = "filter_handler"
+const WIDGET_IMAGE_INPUT_SINGLE = "image_input_single"
+const WIDGET_PREVIEW_IMAGE_SINGLE = "preview_image_single"
+const WIDGET_GROUP_HANDLER = "group_handler"
+const WIDGET_QUIZ = "quiz"
+const WIDGET_QUIZ_EDITOR = "quiz_editor"
+const WIDGET_STEPPER = "stepper"
+
+// Requisições via GET / POST
+const REQUEST_DELETE_LIST_INPUT = "delete_list_input"
+
+// Tipos de filtros
+const FILTER_TYPE_WHERE = "where"
+const FILTER_TYPE_GROUP = "group"
+const FILTER_TYPE_HAVING = "having"
+const FILTER_TYPE_ORDER = "order"
+
+// Operações matemáticas
+const MATH_SUM = "SUM"
+
+// Lista de operações matemáticas
+const MATH_OPERATIONS = [MATH_SUM]
+
+// APIs
+const API_JQUERY_MASK = "jqueryMask"
+const API_INPUTMASK = "inputmask"
+// Dir
+const DIR_IMG = "img"
+
+// Pages
+// const PAGE_REPORT = DEFAULT_URL + "php/pages/report.php"
+
 document.body.append($(`
 <svg id="svg-defs" style="display: none;"><symbol clip-rule="evenodd" fill-rule="evenodd" fill="currentColor" viewBox="0 0 1.55 1.57" id="24h"><title>24h</title>
  <g id="24h-Camada_x0020_1">
@@ -4084,8 +4298,15 @@ document.body.append($(`
 class ModalMaps {
     constructor(config) {
         this.config = $.extend(true, {
+            target: "body",
             title: '[Sem título]',
-            value: null
+            value: null,
+            separator: '&',
+            onSubmit: () => {
+                latidude: 123
+                longitude: 123
+                location: ""
+            }
         }, config)
 
         this.address = null,
@@ -4112,14 +4333,25 @@ class ModalMaps {
 
         this.setCoordinates(this.config.value)
         
-        this.setAddress(this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude()))
-
+        // this.setAddress(this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude()))
+        this.setAddress()
         this.wrapper.append(this.container)
 
         this.contentHeader.append(
             this.title,
             this.iconClose
         )
+
+        this.button.click(() => {
+            this.config.onSubmit({
+                latitude: '',
+                longitude: '',
+                rua: '',
+                etc: '',
+                latitude: '',
+                latitude: '',
+            }/* Dados */)
+        })
 
         this.areaClick.append(this.button)
         this.button.text(this.getTextButton())
@@ -4149,6 +4381,11 @@ class ModalMaps {
         this.iconClose.on('click', () => {
             this.wrapper.css('display', 'none')
             this.divModal.css('display', 'flex')
+        })
+
+        this.modal = new Modal({
+            target: this.config.target,
+            title: this.config.title
         })
     }
 
@@ -4347,15 +4584,12 @@ class ModalMaps {
 
     parseCoordinatesString(coordinateString) {
         const regexCoordinates = /^-?(90(\.0+)?|[1-8]?\d(\.\d+)?),\s*-?(180(\.0+)?|1[0-7]\d(\.\d+)?|\d{1,2}(\.\d+)?)$/
+        const coordinates = coordinateString.split('&')
+        const latitude = parseFloat(coordinates[0])
+        const longitude = parseFloat(coordinates[1])
 
-        if(regexCoordinates.test(coordinateString)) {
-            const coordinates = coordinateString.trim().split('&')
-            const latitude = parseFloat(coordinates[0])
-            const longitude = parseFloat(coordinates[1])
-
-            if(!isNaN(latitude) && !isNaN(longitude)) {
-                return { latitude, longitude }
-            }
+        if(!isNaN(latitude) && !isNaN(longitude) && regexCoordinates.test(latitude) && regexCoordinates.test(longitude)) {
+            return { latitude, longitude }
         }
         return null
     }
@@ -4466,10 +4700,9 @@ class ModalMaps {
         if(coordinates && parseCoordinates) {
             this.setPositionLatitude(parseCoordinates.latitude)
             this.setPositionLongitude(parseCoordinates.longitude)
-            return
+        }else {
+            this.setDefaultCoodinates()
         }
-
-        this.setDefaultCoodinates()
     }
 
     setDefaultCoodinates() {
@@ -4505,6 +4738,601 @@ class ModalMaps {
         return this.wrapper
     }
 }
+/**
+ * Classe para uso de modais
+ * @author Rodrigo Hoffmann
+ * @param object config
+ */
+class Modal {
+   constructor(config) {
+      let self = this
+
+      // Configuração padrão da classe
+      this.config = {
+         type: WIDGET_MODAL,
+         target: "body",
+         title: "Ops!",
+         subtitle: '',
+         content: "Deseja continuar?",
+         size: "xsmall",
+         responsive: false,
+         style: "default",
+         theme: "default",
+         zIndex: 2900,
+         minHeight: null,
+         animation: "rise",
+         lineColor: COLORS.GREY,
+         icon: "ic warning",
+         closeIcon: true,
+         isLoading: false,
+         loader: false,
+         backgroundDismiss: false,
+         backgroundImage: undefined,
+         line: false,
+         align: {
+            vertical: "center",
+            horizontal: "center",
+         },
+         buttons: {
+            action: true,
+            cancel: true,
+            align: "right",
+            cancelButton: {
+               label: "Fechar",
+               class: "btn-cl",
+            },
+            actionButtons: [],
+         },
+         build: {
+            divider: false,
+            header: true,
+            footer: true,
+            content: {
+               padding: true,
+            },
+         }
+      }
+
+      // Sobreescreve a configuração da classe
+      if (config) {
+         this.config = $.extend(true, this.config, config)
+      }
+
+      // Cria os elementos do modal
+      this.container = new Div("md-bg hd")
+      this.modalAlign = new Div("md-al")
+      this.modalColumn = new Div("")
+      this.modalPanel = new Div("md-pn")
+
+      this.modalHeading = new Div("md-hd")
+      this.modalHeadingIcon = new Icon("md-hd-i")
+      this.modalHeadingContainer = new Div("md-hd-ct")
+      this.modalHeadingRow = new Div("md-hd-row")
+      this.modalHeadingContent = new Div("md-hd-c")
+      this.modalHeadingSubTitle = new Div("md-hd-st")
+      this.modalHeadingTools = new Div("md-hd-tl")
+      this.modalContent = new Div("md-ct")
+      this.modalFooter = new Div("md-ft")
+      this.modalFooterContainer = new Div("md-ft-ct")
+      this.modalFooterRow = new Div("md-ft-row")
+      this.modalFooterContent = new Div("md-ft-c")
+
+      // Configura o z-index do Modal
+      this.container.css("z-index", this.config.zIndex)
+
+      // Configura os elementos
+      if (this.config.backgroundImage) {
+         this.container.css({
+            backgroundImage: "url(" + this.config.backgroundImage + ")",
+         })
+      }
+
+      this.modalPanel.css("min-height", this.config.minHeight || 0)
+      if (this.config.buttons?.cancelButton.position) {
+         this.modalFooterRow.css("position", this.config.buttons.cancelButton.position)
+      }
+
+
+      // Carrega o loader se passado como parametro
+      this.loaderContainer = new Div("col-auto pt-5 pb-4")
+      this.loaderGrid = new Div("col-12 tx-c")
+      this.loader = new Div("ld")
+
+      if (this.config.loader) {
+         this.loaderGrid.append(this.loader)
+         this.loaderContainer.append(this.loaderGrid)
+         this.modalPanel.append(this.loaderContainer)
+      }
+
+      this.container.addClass(this.config.animation)
+
+      switch (this.config.theme) {
+         case "primary":
+            this.container.addClass("md-pm")
+            break
+         case "accent":
+            this.container.addClass("md-ac")
+            break
+         case "info":
+            this.container.addClass("md-if")
+            break
+         case "warning":
+            this.container.addClass("md-wn")
+            break
+         case "success":
+            this.container.addClass("md-sc")
+            break
+         case "danger":
+            this.container.addClass("md-dg")
+            break
+         default:
+            break
+      }
+
+      // Adiciona a linha superior ao modal
+      if (this.config.line) {
+         this.modalPanel.addClass('md-pn-ln');
+         this.modalPanel.css('--line-color', this.config.lineColor);
+      }
+
+      this.modalHeadingSubTitle.html(this.config.subtitle)
+      this.modalHeadingContent.html(this.config.title)
+
+      if (this.config.subtitle) {
+         this.modalHeadingContent.append(this.modalHeadingSubTitle)
+      }
+
+      this.modalContent.html(this.config.content)
+
+      if (this.config.closeIcon) {
+         this.closeIcon = this.config.closeIconType ? new Icon("md-close ic close " + this.config.closeIconType) : new Icon("md-close ic close")
+
+         this.modalPanel.append(this.closeIcon)
+         this.closeIcon.click(function () {
+            if (self.onCloseIconClick) self.onCloseIconClick()
+            self.close()
+         })
+      }
+
+      if (this.config.backgroundDismiss) {
+         $(document).mouseup(function (e) {
+            if (!self.modalPanel.is(e.target) && self.modalPanel.has(e.target).length === 0) {
+               self.close()
+            }
+         })
+      }
+
+      switch (this.config.align.horizontal) {
+         case "center":
+            this.modalAlign.addClass("jf-ct-c")
+            break
+         case "left":
+            this.modalAlign.addClass("jf-ct-s")
+            break
+         case "right":
+            this.modalAlign.addClass("jf-ct-e")
+            break
+         default:
+            this.modalAlign.addClass("jf-ct-c")
+            break
+      }
+
+      // TODO: problema no scroll:  Remover classe al-it-c na versão mobile
+      switch (this.config.align.vertical) {
+         case "center":
+            this.modalAlign.addClass("al-it-c")
+            break
+         case "top":
+            this.modalAlign.addClass("al-it-t")
+            break
+         case "bottom":
+            this.modalAlign.addClass("al-it-e")
+            break
+         default:
+            this.modalAlign.addClass("al-it-c")
+            break
+      }
+
+      this.setSize(this.config.size)
+
+      switch (this.config.style) {
+         case "alert":
+         case "fullscreen":
+            this.modalFooterRow.addClass("jf-ct-c")
+            break
+         default:
+            switch (this.config.buttons.align) {
+               case "center":
+                  this.modalFooterRow.addClass("jf-ct-c")
+                  break
+               case "left":
+                  this.modalFooterRow.addClass("jf-ct-s")
+                  break
+               case "right":
+                  this.modalFooterRow.addClass("jf-ct-e")
+                  break
+               default:
+                  this.modalFooterRow.addClass("jf-ct-e")
+                  break
+            }
+            break
+      }
+
+      switch (this.config.style) {
+         case "alert":
+            this.container.addClass("alert")
+            this.modalHeadingIcon.addClass(this.config.icon)
+            this.modalHeadingRow.prepend(this.modalHeadingIcon)
+            // this.modalColumn.css({ maxWidth: this.config.maxWidth ? this.config.maxWidth : 350 + 'px' });
+            break
+         case "fullscreen":
+            this.modalHeadingIcon.addClass(this.config.icon)
+            this.modalHeadingContent.prepend(this.modalHeadingIcon)
+            this.container.addClass("fullscreen")
+            break
+         case "report":
+            this.container.addClass("report")
+         case "editor":
+            this.container.addClass("editor scroll-bar")
+            break
+      }
+
+      if (this.config.buttons.cancel) {
+         this.cancelButton = new Button(this.config.buttons.cancelButton.class)
+         this.cancelButton.addClass('btn')
+         this.cancelButton.attr('type', 'button')
+         this.cancelButton.html(this.config.buttons.cancelButton.label)
+         this.modalFooterContent.append(this.cancelButton)
+         this.cancelButton.click(function () {
+            self.close()
+         })
+      }
+
+      if (this.config.buttons.action) {
+         if (this.config.buttons.actionButtons.length > 0) {
+            for (var i in this.config.buttons.actionButtons) {
+               var buttonConfig = this.config.buttons.actionButtons[i]
+
+               this.setButton(buttonConfig)
+            }
+         }
+      }
+
+      // Constroi o layout
+      this.modalHeadingRow.append(this.modalHeadingContent)
+      // this.modalHeadingRow.append(this.modalHeadingTools);
+      this.modalHeadingContainer.append(this.modalHeadingRow)
+      this.modalHeading.append(this.modalHeadingContainer)
+
+      this.modalFooterRow.append(this.modalFooterContent)
+      this.modalFooterContainer.append(this.modalFooterRow)
+      this.modalFooter.append(this.modalFooterContainer)
+
+      if (this.config.build.header) {
+         if (this.config.build.header !== "false") {
+            this.modalPanel.append(this.modalHeading)
+         }
+      }
+
+      this.modalPanel.append(this.modalContent)
+
+      if (!this.config.build.content.padding) {
+         this.modalContent.addClass("no-pd")
+      }
+
+      if (this.config.build.footer) {
+         if (this.config.build.footer !== "false") {
+            this.modalPanel.append(this.modalFooter)
+         }
+      }
+
+      if (!this.config.build.divider || this.config.build.divider == "false") {
+         this.modalHeading.addClass("no-dv")
+         this.modalFooter.addClass("no-dv")
+      }
+
+      this.modalColumn.append(this.modalPanel)
+      this.modalAlign.append(this.modalColumn)
+      this.container.append(this.modalAlign)
+
+      // $(document).keyup(function (e) {
+      //     if (e.keyCode === 27) {
+      //         // 'ESC';
+      //         // $('body').find('.md-bg').length;
+      //         // TODO: close on esc
+      //     }
+      // });
+   }
+
+   /**
+    * Define a largura do modal
+    * @param string size
+    */
+   setSize(size) {
+      // Reseta a classe da coluna
+      this.modalColumn.removeClass()
+
+
+      if (this.config.maxWidth) {
+         this.modalColumn.addClass("col")
+         this.modalColumn.css({ maxWidth: this.config.maxWidth + "px" })
+      } else {
+         // switch (this.config.style) {
+         //     case 'alert':
+         //         this.modalColumn.addClass('col');
+         //         break;
+         //     default:
+
+
+         switch (size) {
+            case "xsmall":
+               this.modalColumn.addClass("col-auto")
+               break
+            case "small":
+               this.modalColumn.addClass("col-sm-5 col-md-4 col-lg-3")
+
+               this.modalFooterContent.addClass('jf-ct-c row mt-1')
+               break
+            case "medium":
+               this.modalColumn.addClass("col-sm-8 col-md-7 col-lg-6")
+               break
+            case "large":
+               this.modalColumn.addClass("col-sm-10 col-md-9 col-lg-8")
+               break
+            case "xlarge":
+               this.modalColumn.addClass("col-sm-12 col-md-11 col-lg-10")
+               break
+            case "full":
+               this.modalColumn.addClass("col-12")
+               break
+            case "fullscreen":
+               this.modalColumn.addClass("fw")
+               this.modalPanel.removeClass("md-pn")
+               break
+            case "auto":
+               this.modalColumn.addClass("col-auto")
+               break
+            default:
+               this.modalColumn.addClass(`${size}`)
+               // this.modalColumn.addClass('col-sm-8 col-md-7 col-lg-6');
+               break
+         }
+         // break;
+         // }
+      }
+   }
+
+
+   /**
+    * Define se o modal está carregando conteúdo ou executando alguma ação
+    * @param bool isLoading
+    */
+   setLoading(isLoading) {
+      let self = this
+
+      setTimeout(function () {
+         self.config.isLoading = isLoading
+      }, TIME_SLOW)
+   }
+
+   /**
+    * Adiciona um botão ao formulário
+    * @param object buttonConfig
+    */
+   setButton(buttonConfig) {
+      self = this
+      let button
+
+      if (buttonConfig.class) {
+         button = new Button(buttonConfig.class)
+      } else {
+         button = new Button("btn-ac")
+      }
+
+      button.html(buttonConfig.label)
+      button.addClass('btn')
+      button.attr('type', 'button')
+
+      button.click(function () {
+         if (buttonConfig.function) {
+            buttonConfig.function.call(this, buttonConfig.params)
+         }
+      })
+
+      if (buttonConfig.key) {
+         $(document).on("keypress", function (event) {
+            if (event.which == buttonConfig.key) {
+               if (buttonConfig.block) {
+                  if (!self.config.isLoading) {
+                     self.config.isLoading = true
+                     button.click()
+                  }
+               } else {
+                  button.click()
+               }
+            }
+         })
+      }
+
+      this.modalFooterContent.append(button)
+   }
+
+   /**
+    * Altera conteúdo do modal
+    * @param object view
+    */
+   setContent(view) {
+      let self = this
+
+      this.modalContent.html("")
+      this.modalContent.append(view)
+
+      // Resolve o bug do scroll do modal
+      setTimeout(function () {
+         if (self.container.height() < self.modalPanel.height()) {
+            self.modalAlign.removeClass("al-it-c")
+         }
+      }, TIME_DEFAULT)
+   }
+
+   /**
+    * Altera conteúdo do modal
+    * @param object view
+    */
+   setHeader(view) {
+      this.modalHeadingRow.html("")
+      this.modalHeadingRow.append(view)
+   }
+
+   appendToHeaderContent(view){
+      this.modalHeadingContent.append(view)
+   }
+
+   /**
+    * Altera o titulo
+    * @param string title
+    */
+   setTitle(title) {
+      this.modalHeadingContent.html(title)
+   }
+
+   /**
+    * Define o elemento pai do modal
+    */
+   setTarget(target) {
+      this.config.target = target
+   }
+
+   // Remove o rodapé
+   removeFooter() {
+      this.modalFooter.remove()
+   }
+
+   // Animação negativa do modal
+   shake() {
+      let self = this
+
+      this.container.addClass("shake")
+      setTimeout(function () {
+         self.container.removeClass("shake")
+      }, TIME_SLOW)
+
+      var audio = new Audio(DEFAULT_ASSETS_URL + "audio/error.mp3")
+      audio.volume = ui.getVolume()
+      audio.play()
+   }
+
+   // Mostra o modal na tela
+   show() {
+      this.container.removeClass("hide")
+      this.container.removeClass("hd")
+      $(this.config.target).append(this.getView())
+   }
+
+   hide() {
+      this.container.addClass("hd")
+   }
+
+   // Define o callback de fechamento do modal
+   setOnClose(onClose) {
+      this.onClose = onClose
+   }
+
+   // Define o callback de fechamento do modal
+   setOnBeforeClose(onBeforeClose) {
+      this.onBeforeClose = onBeforeClose
+   }
+
+   // Elimina o modal
+   close() {
+      if (this.config.detach) {
+
+         this.closeWithDetach()
+
+      } else {
+
+         this.closeWithRemove()
+
+      }
+   }
+
+   closeWithRemove() {
+      let self = this
+
+      if (this.onClose) {
+         this.onClose.call()
+      }
+
+      this.container.addClass("hide")
+
+      setTimeout(function () {
+         self.container.remove()
+
+         self.onDestroy()
+      }, TIME_FAST)
+   }
+
+   closeWithDetach() {
+      let self = this
+
+      if (this.onClose) {
+         this.onClose.call()
+      }
+
+      this.container.addClass("hide")
+
+      setTimeout(function () {
+         self.container.detach()
+         self.onDestroy()
+      }, TIME_FAST)
+   }
+
+   showFooter() {
+      this.modalFooter.removeClass("hd")
+   }
+
+   hideFooter() {
+      this.modalFooter.addClass("hd")
+   }
+
+   // Esconde o loader
+   hideLoader() {
+      this.loaderContainer.addClass("hd")
+   }
+
+   // Mostra o loader
+   showLoader() {
+      this.loaderContainer.removeClass("hd")
+   }
+
+   // Exclui o objeto da memória
+   onDestroy() {
+      let self = this
+      if (self.config.onDestroy) {
+         if (typeof self.config.onDestroy === 'function') {
+
+            self.config.onDestroy.call()
+         }
+      }
+      delete this
+   }
+
+   setDataAttr(name, value) {
+      this.container.attr(name, value)
+   }
+
+   getDataAttr(name) {
+      return this.container.attr(name.toString())
+   }
+
+   /**
+    * @returns view
+    */
+   getView() {
+      return this.container
+   }
+}
+
 const body = $('body');
 
 const fieldGroup = new FieldGroup({
@@ -4521,21 +5349,20 @@ const fildModalMaps = new FieldGroup({
    collapse: false
 })
 
-// const listCardLocation = new FieldGroup({
-//    title: "Localizações selecionadas",
-//    description: "Endereco latitude e longitude",
-//    open: true,
-//    collapse: false
-// })
+
+const teste = new Modal({
+   size: "large"
+})
+
+teste.show()
+
 
 const modalMaps = new ModalMaps({
    title: "Modal de pesquisa",
-   value: "&"
+   value: "-4.8653802&-46.633308"
 })
 
-// listCardLocation.appendToContent(modalMaps.getCardAdress())
 fildModalMaps.appendToContent([modalMaps.getViewButtonModal(), modalMaps.getView()])
-// const contentList = [otherFieldGroup.getView(), fildModalMaps.getView()]
 const contentList = [fildModalMaps.getView()]
 
 

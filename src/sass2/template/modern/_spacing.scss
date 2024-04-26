@@ -1,0 +1,120 @@
+@each $key, $value in $dimens {
+    // padding
+    @include box-pd($key, $value);
+
+    // margin-bottom
+    @include mb($key, $value);
+
+    // margin-right
+    @include mr($key, $value);
+
+    // padding-bottom
+    @include pb($key, $value);
+
+    // padding-right
+    @include pr($key, $value);
+
+    // width
+    @include wd($key, $value);
+
+    // min-width
+    @include mw($key, $value);
+
+    // col-pd
+    @include col-pd($key, $value);
+
+    // spacing between
+    @include col-sp($key, $value);
+
+    // Compensação para containers
+    @include off-gd($key, $value);
+
+    // margin-top
+    @include mt($key, $value);
+
+    // margin-left
+    @include ml($key, $value);
+
+    // padding-top
+    @include pt($key, $value);
+
+    // padding-left
+    @include pl($key, $value);
+
+    // height
+    @include ht($key, $value);
+
+    // Margin top & bottom
+    @include row-pd($key, $value);
+
+    // spacing between
+    @include row-sp($key, $value);
+
+    // Margin top & bottom
+    @include row-mg($key, $value);
+}
+
+/* Margin */
+
+.m-auto {
+    margin: auto;
+}
+
+/* Reset margin & padding */
+
+.no-mg {
+    margin: 0;
+}
+
+.no-pd {
+    padding: 0 !important;
+}
+
+/* Full width & height*/
+
+.fh {
+    height: $full;
+}
+
+.fw {
+    width: $full;
+}
+
+.mh-f {
+    min-height: 100%;
+}
+
+/* Space with border */
+
+.m-40 {
+    margin: 40px auto;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+
+.mh-4 {
+    min-height: $dimen-4x;
+}
+
+.mh-6 {
+    min-height: $dimen-6x;
+}
+
+/*line height*/
+
+.lh {
+    line-height: 1.265;
+}
+
+/* max width*/
+
+.mw {
+    max-width: 1160px;
+}

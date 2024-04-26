@@ -52,3 +52,43 @@ body{
   font-family: "Manrope";
 }
 
+.ct-fl {
+  width: 100%;
+  padding-right: $gutter-1x;
+  padding-left: $gutter-1x;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: - $gutter-1x;
+  margin-left: - $gutter-1x;
+}
+
+%grid-column {
+  position: relative;
+  width: $full;
+  min-height: 1px;
+  padding-right: $gutter-1x;
+  padding-left: $gutter-1x;
+  overflow-wrap: break-word;
+  // hyphens: auto;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: $full;
+  @extend %grid-column;
+}
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+  @extend %grid-column;
+}
+
+

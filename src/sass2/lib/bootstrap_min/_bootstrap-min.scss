@@ -1,0 +1,376 @@
+//Container
+.ct {
+    @extend .container;
+}
+
+.ct-fl {
+    @extend .container-fluid;
+}
+
+//No Gutters
+.no-gt {
+    @extend .no-gutters;
+}
+
+// Small gutters
+.gt-sm {
+  margin-right: -7.5px;
+  margin-left: -7.5px;
+  > [class*="col-"], > .col {
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+  }
+  
+}
+
+// Small gutters
+.gt-xs {
+    margin-right: -1px;
+    margin-left: -1px;
+    > [class*="col-"], > .col {
+      padding-right: 1px;
+      padding-left: 1px;
+    }
+    
+  }
+
+//Align Items Start
+.al-it-s {
+    @extend .align-items-start;
+}
+
+.al-it-sm-s {
+    @extend .align-items-sm-start;
+}
+
+.al-it-md-s {
+    @extend .align-items-md-start;
+}
+
+.al-it-lg-s {
+    @extend .align-items-lg-start;
+}
+
+//Align Items Center
+.al-it-c {
+    @extend .align-items-center;
+}
+
+.al-it-sm-c {
+    @extend .align-items-sm-center;
+}
+
+.al-it-md-c {
+    @extend .align-items-md-center;
+}
+
+.al-it-lg-c {
+    @extend .align-items-lg-center;
+}
+
+//Align Items End
+.al-it-e {
+    @extend .align-items-end;
+}
+
+.al-it-sm-e {
+    @extend .align-items-sm-end;
+}
+
+.al-it-md-e {
+    @extend .align-items-md-end;
+}
+
+.al-it-lg-e {
+    @extend .align-items-lg-end;
+}
+
+//Align Self Start
+.al-sf-s {
+    @extend .align-self-start;
+}
+
+.al-sf-sm-s {
+    @extend .align-self-sm-start;
+}
+
+.al-sf-md-s {
+    @extend .align-self-md-start;
+}
+
+.al-sf-lg-s {
+    @extend .align-self-lg-start;
+}
+
+//Align Self Center
+.al-sf-c {
+    @extend .align-self-center;
+}
+
+.al-sf-sm-c {
+    @extend .align-self-sm-center;
+}
+
+.al-sf-md-c {
+    @extend .align-self-md-center;
+}
+
+.al-sf-lg-c {
+    @extend .align-self-lg-center;
+}
+
+//Align Self End
+.al-sf-e {
+    @extend .align-self-end;
+}
+
+.al-sf-sm-e {
+    @extend .align-self-sm-end;
+}
+
+.al-sf-md-e {
+    @extend .align-self-md-end;
+}
+
+.al-sf-lg-e {
+    @extend .align-self-lg-end;
+}
+
+//Justify Content Start
+.jf-ct-s {
+    @extend .justify-content-start;
+}
+
+.jf-ct-sm-s {
+    @extend .justify-content-sm-start;
+}
+
+.jf-ct-md-s {
+    @extend .justify-content-md-start;
+}
+
+.jf-ct-lg-s {
+    @extend .justify-content-lg-start;
+}
+
+//Justify Content Center
+.jf-ct-c {
+    @extend .justify-content-center;
+}
+
+.jf-ct-sm-c {
+    @extend .justify-content-sm-center;
+}
+
+.jf-ct-md-c {
+    @extend .justify-content-md-center;
+}
+
+.jf-ct-lg-c {
+    @extend .justify-content-lg-center;
+}
+
+//Justify Content End
+.jf-ct-e {
+    @extend .justify-content-end;
+}
+
+.jf-ct-sm-e {
+    @extend .justify-content-sm-end;
+}
+
+.jf-ct-md-e {
+    @extend .justify-content-md-end;
+}
+
+.jf-ct-lg-e {
+    @extend .justify-content-lg-end;
+}
+
+//Justify Content Around
+.jf-ct-a {
+    @extend .justify-content-around;
+}
+
+.jf-ct-sm-a {
+    @extend .justify-content-sm-around;
+}
+
+.jf-ct-md-a {
+    @extend .justify-content-md-around;
+}
+
+.jf-ct-lg-a {
+    @extend .justify-content-lg-around;
+}
+
+//Justify Content Between
+.jf-ct-b {
+    @extend .justify-content-between;
+}
+
+.jf-ct-sm-b {
+    @extend .justify-content-sm-between;
+}
+
+.jf-ct-md-b {
+    @extend .justify-content-md-between;
+}
+
+.jf-ct-lg-b {
+    @extend .justify-content-lg-between;
+}
+
+//Order
+.order-f {
+    @extend .order-first;
+}
+
+.order-l {
+    @extend .order-last;
+}
+
+//Offset
+.off-sm-0 {
+    @extend .offset-sm-0;
+}
+
+.off-sm-1 {
+    @extend .offset-sm-1;
+}
+
+.off-sm-2 {
+    @extend .offset-sm-2;
+}
+
+.off-sm-3 {
+    @extend .offset-sm-3;
+}
+
+.off-sm-4 {
+    @extend .offset-sm-4;
+}
+
+.off-sm-5 {
+    @extend .offset-sm-5;
+}
+
+.off-sm-6 {
+    @extend .offset-sm-6;
+}
+
+.off-sm-7 {
+    @extend .offset-sm-7;
+}
+
+.off-sm-8 {
+    @extend .offset-sm-8;
+}
+
+.off-sm-9 {
+    @extend .offset-sm-9;
+}
+
+.off-sm-10 {
+    @extend .offset-sm-10;
+}
+
+.off-sm-11 {
+    @extend .offset-sm-11;
+}
+
+.off-md-0 {
+    @extend .offset-md-0;
+}
+
+.off-md-1 {
+    @extend .offset-md-1;
+}
+
+.off-md-2 {
+    @extend .offset-md-2;
+}
+
+.off-md-3 {
+    @extend .offset-md-3;
+}
+
+.off-md-4 {
+    @extend .offset-md-4;
+}
+
+.off-md-5 {
+    @extend .offset-md-5;
+}
+
+.off-md-6 {
+    @extend .offset-md-6;
+}
+
+.off-md-7 {
+    @extend .offset-md-7;
+}
+
+.off-md-8 {
+    @extend .offset-md-8;
+}
+
+.off-md-9 {
+    @extend .offset-md-9;
+}
+
+.off-md-10 {
+    @extend .offset-md-10;
+}
+
+.off-md-11 {
+    @extend .offset-md-11;
+}
+
+.off-lg-0 {
+    @extend .offset-lg-0;
+}
+
+.off-lg-1 {
+    @extend .offset-lg-1;
+}
+
+.off-lg-2 {
+    @extend .offset-lg-2;
+}
+
+.off-lg-3 {
+    @extend .offset-lg-3;
+}
+
+.off-lg-4 {
+    @extend .offset-lg-4;
+}
+
+.off-lg-5 {
+    @extend .offset-lg-5;
+}
+
+.off-lg-6 {
+    @extend .offset-lg-6;
+}
+
+.off-lg-7 {
+    @extend .offset-lg-7;
+}
+
+.off-lg-8 {
+    @extend .offset-lg-8;
+}
+
+.off-lg-9 {
+    @extend .offset-lg-9;
+}
+
+.off-lg-10 {
+    @extend .offset-lg-10;
+}
+
+.off-lg-11 {
+    @extend .offset-lg-11;
+}

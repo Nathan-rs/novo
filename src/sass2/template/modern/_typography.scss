@@ -1,0 +1,278 @@
+
+
+html,
+body {
+    position: relative;
+
+    background-color: $color-third;
+    color: $color-primary;
+     
+    // background: blue;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: $font-primary;;  
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    height: $full;
+    overflow: hidden;
+}
+
+// Sem contorno em campos
+* :focus {
+    outline: none;
+}
+
+// Estilo de listas
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ic{
+    font-size: 20px;
+}
+a,
+a * {
+    @extend .transition-all;
+    cursor:pointer;
+    text-decoration: none;
+}
+a:hover,
+a:hover *,
+a:active,
+a:active * {
+    color: $color-accent;
+}
+
+.tx-wt-hv {
+    &:hover *,
+    &:hover{
+        color: $color-white !important;
+    }
+}
+
+
+// Img fix
+img {
+    vertical-align: middle;
+}
+
+// Display 
+.hd {
+    display: none !important;
+}
+
+.iv {
+    visibility: hidden;
+}
+
+.cs-cp {
+    cursor: pointer;
+}
+
+// Barra de rolagem
+.no-scroll-bar {
+     ::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+        background: transparent;
+    }
+     ::-webkit-scrollbar-thumb {
+        height: 0px;
+    }
+}
+
+// Quebra de texto
+.nowrap {
+    white-space: nowrap;
+}
+
+// Cursor 
+.clickable {
+    cursor: pointer;
+}
+
+.align-div-middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+// Display
+.bk {
+    display: block;
+}
+
+.il {
+    display: inline-block;
+}
+
+// Font-Italic 
+.ft-st-it {
+    font-style: italic;
+}
+
+// Text-Decoration
+.ft-td-lt {
+    text-decoration: line-through;
+}
+
+.ft-td-ol {
+    text-decoration: overline;
+}
+
+.ft-td-ul {
+    text-decoration: underline;
+}
+
+// Line-spacing 
+.tx-ct {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ab-ct {
+    //@extend .ab;
+    position: absolute;
+    //@extend .fw;
+    width: $full;
+    //@extend .tx-c;
+    
+    top: $half;
+    @include transform(translateY(-$half));
+}
+
+// Seleção de texto
+.no-sl {
+    @include user-select(none);
+}
+
+// Box shadow
+.bs-bk {
+    @include material-shadow($color-black);
+}
+
+.bs-lt {
+    @include box-shadow($box-shadow-small);
+}
+
+@media (max-width: 768px) {
+    .dr-rv {
+        flex-direction: column-reverse;
+    }
+}
+
+// Header 
+@each $key, $value in $title {
+    @include h($key, $value);
+}
+
+// Tipo de fonte
+@each $key, $value in $font-family {
+    @include font-weight($key, $value);
+}
+
+// Tipo de fonte
+@each $key, $value in $font-weight {
+    @include font-stroke($key, $value);
+}
+
+// Alignment
+@each $key, $value in $align {
+    @include alignment($key, $value);
+}
+
+// Text colors
+@each $key, $value in $theme-colors {
+    @include colors($key, $value);
+}
+
+// Fonts
+@each $key, $value in $fonts {
+    @include font-size($key, $value);
+}
+
+// Background 
+@each $key, $value in $theme-colors {
+    // Cor de fundao
+    @include background($key, $value);
+
+
+    @include background-hover($key, $value);
+
+    
+    // Cor da borda
+    @include border-color($key, $value);
+}
+
+// Tamanho das bordas
+@each $key, $value in $border-width {
+    @include border-width($key, $value);
+}
+
+// Estilo das bordas
+@each $key, $value in $border-styles {
+    
+    // estilo das bordas
+    @include border-style($key, $value);
+
+    // Estilo das bordas ao topo
+    @include border-top-style($key, $value);
+
+    // Estilo das bordas a direita
+    @include border-right-style($key, $value);
+
+    // Estilo das bordas a baixo
+    @include border-bottom-style($key, $value);
+
+    // Estilo das bordas a esquerda
+    @include border-left-style($key, $value);
+
+}
+
+// Line-heigth 
+@each $key, $value in $line-heights {
+    @include line-height($key, $value);
+}
+
+// Word-spacing
+@each $key, $value in $word-spacing {
+    @include word-spacing($key, $value);
+}
+ 
+// letter-spacing
+@each $key, $value in $letter-spacing {
+    @include letter-spacing($key, $value);
+}
+
+// Border radius
+@each $key, $value in $border-radius {
+    @include bd-radius($key, $value);
+}
+
+/*
+// Position
+@each $key, $value in $positioning {
+    @include position($key, $value);
+}
+*/
+
+/*
+// Text transform 
+@each $key, $value in $transform {
+    @include text-transform($key, $value);
+}
+*/
+
+/*
+// Borders
+@each $key, $value in $colors {
+    @include colors($key, $value);
+}
+*/

@@ -1,8 +1,15 @@
 class ModalMaps {
     constructor(config) {
         this.config = $.extend(true, {
+            target: "body",
             title: '[Sem título]',
-            value: null
+            value: null,
+            separator: '&',
+            onSubmit: () => {
+                latidude: 123
+                longitude: 123
+                location: ""
+            }
         }, config)
 
         this.address = null,
@@ -29,14 +36,25 @@ class ModalMaps {
 
         this.setCoordinates(this.config.value)
         
-        this.setAddress(this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude()))
-
+        // this.setAddress(this.getAddressLatitudeLongitude(this.getPositionLatitude(), this.getPositionLongitude()))
+        this.setAddress()
         this.wrapper.append(this.container)
 
         this.contentHeader.append(
             this.title,
             this.iconClose
         )
+
+        this.button.click(() => {
+            this.config.onSubmit({
+                latitude: '',
+                longitude: '',
+                rua: '',
+                etc: '',
+                latitude: '',
+                latitude: '',
+            }/* Dados */)
+        })
 
         this.areaClick.append(this.button)
         this.button.text(this.getTextButton())
@@ -66,6 +84,11 @@ class ModalMaps {
         this.iconClose.on('click', () => {
             this.wrapper.css('display', 'none')
             this.divModal.css('display', 'flex')
+        })
+
+        this.modal = new Modal({
+            target: this.config.target,
+            title: this.config.title
         })
     }
 
@@ -264,15 +287,12 @@ class ModalMaps {
 
     parseCoordinatesString(coordinateString) {
         const regexCoordinates = /^-?(90(\.0+)?|[1-8]?\d(\.\d+)?),\s*-?(180(\.0+)?|1[0-7]\d(\.\d+)?|\d{1,2}(\.\d+)?)$/
+        const coordinates = coordinateString.split('&')
+        const latitude = parseFloat(coordinates[0])
+        const longitude = parseFloat(coordinates[1])
 
-        if(regexCoordinates.test(coordinateString)) {
-            const coordinates = coordinateString.trim().split('&')
-            const latitude = parseFloat(coordinates[0])
-            const longitude = parseFloat(coordinates[1])
-
-            if(!isNaN(latitude) && !isNaN(longitude)) {
-                return { latitude, longitude }
-            }
+        if(!isNaN(latitude) && !isNaN(longitude) && regexCoordinates.test(latitude) && regexCoordinates.test(longitude)) {
+            return { latitude, longitude }
         }
         return null
     }
@@ -383,10 +403,9 @@ class ModalMaps {
         if(coordinates && parseCoordinates) {
             this.setPositionLatitude(parseCoordinates.latitude)
             this.setPositionLongitude(parseCoordinates.longitude)
-            return
+        }else {
+            this.setDefaultCoodinates()
         }
-
-        this.setDefaultCoodinates()
     }
 
     setDefaultCoodinates() {
